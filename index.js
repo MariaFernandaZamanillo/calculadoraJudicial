@@ -12,12 +12,13 @@ class Abogado{
     }
 }
 
-function calcularHonorarios (){ 
+function calcularHonorarios(){ 
 /*La presente calculadora se utiliza para 
 calcular los honorarios que le corresponden
 a un abogado por la tramitacion de un juicio ejecutivo */
 let base;
-base = prompt ("Introduzaca el monto base del juicio actualizado");
+base= document.getElementById("monto").value
+console.log(base)
 base = Number (base);
 let operacion = Number (base * 0.20 * 0.60);
 //se declara como constante el valor de 1 JUS, para usarlo cuando se necesite
@@ -28,17 +29,21 @@ const JUS =  3557;
 let valorEnJUS = Math.round(operacion/JUS)
 
 if (operacion >= 14231) {
-    alert ("Los honorarios del abogado son " + valorEnJUS + " JUS ($"+operacion +")");}
-else {(operacion = 14231)
-    alert ("Los honorarios del abogado son 4 JUS ($14231)");}
-    return operacion
+   
+    document.getElementById("calculo").innerHTML =  "Los honorarios del abogado son " + valorEnJUS + " JUS ($"+operacion +")"
+}
+else {
+    operacion = 14231
+    
+    document.getElementById("calculo").innerHTML = "Los honorarios del abogado son 4 JUS ($14231)"
 }
 
-const abogado = new Abogado ();
+  return operacion
+}
 
 let miArray = []
 
-for (let i = 0; i<4; i++) {
+/* for (let i = 0; i<4; i++) {
     abogado.nombre = prompt ("Introduzca el nombre")
     abogado.apellido = prompt("Introduzca el apellido")
     abogado.matricula = prompt ("Introduzca la matricula")
@@ -46,7 +51,20 @@ for (let i = 0; i<4; i++) {
     abogado.honorarios = calcularHonorarios ()
     console.log(abogado)
     miArray.push(abogado)
-}
+} */
 
-console.log (miArray)
-console.log("Largo", miArray.length)
+//console.log (miArray)
+//console.log("Largo", miArray.length)
+
+function guardar() {
+    const abogado = new Abogado ();
+    abogado.nombre = document.getElementById("nombre").value
+    abogado.apellido = document.getElementById("apellido").value
+    abogado.matricula = document.getElementById("matricula").value
+    abogado.expediente = document.getElementById("expediente").value
+    abogado.honorarios = calcularHonorarios ()
+    //console.log(abogado)
+    miArray.push(abogado)
+    console.log(miArray)
+    document.getElementById("historial").innerHTML = JSON.stringify(miArray)
+}

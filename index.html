@@ -5,10 +5,41 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculadora Judicial</title>
-    <script src="./index.js"></script>
+    
 </head>
 <body>
     <h1>Calculadora Judicial de Honorarios</h1>
     <h2>Calcule de forma facil y rapida los honorarios que le corresponden al abogado en un juicio</h2>
+
+    <form>
+        <div>
+            <label>Nombre</label>
+            <input id="nombre" type="text">
+        </div>
+        <div>
+            <label>Apellido</label>
+            <input id="apellido" type="text">
+        </div>
+        <div>
+            <label>Numero de Matricula</label>
+            <input id= "matricula" type="number"> 
+        </div>
+        <div>
+            <label>Numero de expediente</label>
+            <input id="expediente" type="number">
+        </div>
+       <div>
+        <label>Monto del Juicio</label>
+        <input id= "monto" type="number" onchange="calcularHonorarios()">
+       </div>
+      <div>
+        <label id="calculo">El monto del juicio es </label>
+      </div>
+       
+    </form>
+    <button onclick="guardar()">Guardar</button>
+    <h1>Historial</h1>
+    <label id="historial"></label>
+    <script src="./index.js"></script>
 </body>
 </html>
