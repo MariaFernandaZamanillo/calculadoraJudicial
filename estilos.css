@@ -1,0 +1,33 @@
+* {
+  margin: 0px;
+  padding: 0px;
+}
+
+/* ....... FORMULARIO.....*/
+.form {
+  margin-top: 3rem;
+  margin-bottom: 3rem;
+  margin-left: 10rem;
+  margin-right: 16rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  padding-right: 5rem;
+  padding-left: 5rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: start;
+      -ms-flex-align: start;
+          align-items: flex-start;
+  border-style: double;
+}
+
+.form div {
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+/*# sourceMappingURL=estilos.css.map */

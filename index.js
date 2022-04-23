@@ -42,19 +42,13 @@ else {
 }
 
 let miArray = []
-
-/* for (let i = 0; i<4; i++) {
-    abogado.nombre = prompt ("Introduzca el nombre")
-    abogado.apellido = prompt("Introduzca el apellido")
-    abogado.matricula = prompt ("Introduzca la matricula")
-    abogado.expediente = prompt ("Introduzca el numero de expediente")
-    abogado.honorarios = calcularHonorarios ()
-    console.log(abogado)
-    miArray.push(abogado)
-} */
-
-//console.log (miArray)
-//console.log("Largo", miArray.length)
+if (localStorage.getItem("historial")){
+miArray = JSON.parse(localStorage.getItem("historial"))
+document.getElementById("historial").innerHTML = JSON.stringify(miArray)
+}
+else { miArray = []
+console.log("no existe")
+}
 
 function guardar() {
     const abogado = new Abogado ();
@@ -63,8 +57,16 @@ function guardar() {
     abogado.matricula = document.getElementById("matricula").value
     abogado.expediente = document.getElementById("expediente").value
     abogado.honorarios = calcularHonorarios ()
-    //console.log(abogado)
     miArray.push(abogado)
     console.log(miArray)
     document.getElementById("historial").innerHTML = JSON.stringify(miArray)
+    localStorage.setItem("historial", JSON.stringify(miArray)); 
 }
+
+function borrar() {
+    localStorage.clear("historial")
+    miArray = []
+    document.getElementById("historial").innerHTML = miArray
+}
+
+
