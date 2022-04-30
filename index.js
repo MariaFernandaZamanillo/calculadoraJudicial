@@ -58,10 +58,28 @@ function guardar() {
     abogado.expediente = document.getElementById("expediente").value
     abogado.honorarios = calcularHonorarios ()
     miArray.push(abogado)
-    console.log(miArray)
+    //console.log(miArray)
     document.getElementById("historial").innerHTML = JSON.stringify(miArray)
     localStorage.setItem("historial", JSON.stringify(miArray)); 
+   
 }
+
+function agregar(){
+    let tabla = document.getElementById("table")
+     for(let i=0; i=miArray.length; i++){  
+      let fila = document.createElement ("tr")
+      fila.innerHTML= `<td>1</td>
+                      <td>${miArray[i]?.nombre}</td>
+                      <td>${miArray[i]?.apellido}</td>
+                      <td>${miArray[i]?.matricula}</td>
+                      <td>${miArray[i]?.expediente}</td>
+                      <td>${miArray[i]?.honorarios}</td>
+                      <td><button>Eliminar</button></td>`
+     tabla.appendChild(fila); 
+     }
+}
+
+
 
 function borrar() {
     localStorage.clear("historial")
@@ -69,4 +87,25 @@ function borrar() {
     document.getElementById("historial").innerHTML = miArray
 }
 
-
+const btn = document.querySelector('#borrar')
+ 
+btn.addEventListener('click', () => {
+Swal.fire({
+    title: 'Estas seguro?',
+    text: "Esta accion es irrevertible!",
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Si, borralo!'
+  }).then((result) => {
+    if (result.isConfirmed) {
+        borrar()
+      Swal.fire(
+        'Borrado!',
+        'El historial fue borrado.',
+        'success'
+      )
+    }
+  })
+}) 

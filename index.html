@@ -64,12 +64,12 @@
       
     </form>
     <button onclick="guardar()">Guardar</button>
-    <button onclick="borrar()">Borrar historial</button>
+    <button id= "borrar">Borrar historial</button>
     <button onclick="agregar()">Agregar</button>
     <!--TABLE-->
     <h3 id="historial">Historial</h3>
     <label id="historial"></label>
-    <table class="table">
+    <table id= "table" class="table">
         <thead>
           <tr>
             <th scope="col"></th>
@@ -81,14 +81,6 @@
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-          </tr>
         </tbody>
       </table>
 
@@ -150,5 +142,6 @@
       integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB"
       crossorigin="anonymous"
     ></script>
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>
