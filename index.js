@@ -109,3 +109,20 @@ Swal.fire({
     }
   })
 }) 
+
+const lista = document.querySelector('#listado')
+fetch('https://cors-solucion.herokuapp.com/https://api-dolar-argentina.herokuapp.com/api/nacion',
+)
+    .then( (resp) => resp.json() )
+    .then( (data) => {
+          const li = document.createElement('li')
+          li.innerHTML = `
+              <h4> Cotización Dolar BANCO NACION</h4>
+              <p>Fecha ${data.fecha}</p>
+              <p>Precio compra ${data.compra}</p>
+              <p>Precio venta ${data.venta}</p>
+          `
+          lista.append(li)
+      
+  })
+
