@@ -41,13 +41,51 @@ else {
   return operacion
 }
 
+let tabla = document.getElementById("table") 
+
 let miArray = []
 if (localStorage.getItem("historial")){
 miArray = JSON.parse(localStorage.getItem("historial"))
-document.getElementById("historial").innerHTML = JSON.stringify(miArray)
+agregar ()
+//document.getElementById("historial").innerHTML = JSON.stringify(miArray)
 }
 else { miArray = []
-console.log("no existe")
+}
+
+function resetTable(){
+  tabla.innerHTML = '';
+  tabla.innerHTML = ` <thead>
+  <tr>
+    <th scope="col"></th>
+    <th scope="col">Nombre</th>
+    <th scope="col">Apellido</th>
+    <th scope="col">Matricula</th>
+    <th scope="col">N° Expte</th>
+    <th scope="col">Honorarios</th>
+  </tr>
+</thead>
+<tbody>
+</tbody>`
+}
+
+function eliminarFila(i){
+  miArray.splice(i, 1)
+  agregar()
+}
+
+function agregar(){
+  resetTable()
+    for(let i=0; i<miArray.length; i++){  
+      let fila = document.createElement ("tr")
+      fila.innerHTML= `<td></td>
+      <td>${miArray[i]?.nombre}</td>
+      <td>${miArray[i]?.apellido}</td>
+      <td>${miArray[i]?.matricula}</td>
+      <td>${miArray[i]?.expediente}</td>
+      <td>${miArray[i]?.honorarios}</td>
+                      <td><button onclick="eliminarFila(${i})" >Eliminar</button></td>`
+     tabla.appendChild(fila); 
+     }
 }
 
 function guardar() {
@@ -58,25 +96,9 @@ function guardar() {
     abogado.expediente = document.getElementById("expediente").value
     abogado.honorarios = calcularHonorarios ()
     miArray.push(abogado)
-    //console.log(miArray)
-    document.getElementById("historial").innerHTML = JSON.stringify(miArray)
     localStorage.setItem("historial", JSON.stringify(miArray)); 
+    agregar()
    
-}
-
-function agregar(){
-    let tabla = document.getElementById("table")
-     for(let i=0; i=miArray.length; i++){  
-      let fila = document.createElement ("tr")
-      fila.innerHTML= `<td>1</td>
-                      <td>${miArray[i]?.nombre}</td>
-                      <td>${miArray[i]?.apellido}</td>
-                      <td>${miArray[i]?.matricula}</td>
-                      <td>${miArray[i]?.expediente}</td>
-                      <td>${miArray[i]?.honorarios}</td>
-                      <td><button>Eliminar</button></td>`
-     tabla.appendChild(fila); 
-     }
 }
 
 
@@ -84,8 +106,10 @@ function agregar(){
 function borrar() {
     localStorage.clear("historial")
     miArray = []
-    document.getElementById("historial").innerHTML = miArray
+    resetTable()
 }
+
+
 
 const btn = document.querySelector('#borrar')
  
